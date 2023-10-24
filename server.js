@@ -106,7 +106,7 @@ function getData() {
             localStorage.removeItem("jwt")
             logincontainer.style.display = "flex"
             app.style.display = "none"
-            errordiv.style.display = "none";
+            errordiv.innerHTML = ""
             logout.style.display = "none"
             username.value = ""
             password.value = ""
