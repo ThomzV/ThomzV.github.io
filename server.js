@@ -10,22 +10,20 @@ loginForm.addEventListener("submit", async e => {
         const usernameVal = username.value
         const passwordVal = password.value
         try {
-            fetch("https://01.kood.tech/api/auth/signin", {
+            const res = await fetch("https://01.kood.tech/api/auth/signin", {
                 method: "POST",
                 headers: {
-                    "Authorization": "basic " + btoa(`${usernameVal}:${passwordVal}`)
+                    "Authorization": "Basic " + btoa(`${usernameVal}:${passwordVal}`)
                 }
-            })
-            .then(async res => {
-                if (res.ok) {
-                    const token = await res.json()
-                    localStorage.setItem("jwt", token)
-                    getData()
-                } else {
-                    const errortext = await res.json()
-                    errordiv.innerHTML = errortext.error
-                }
-            })
+            });
+            if (res.ok) {
+                const token = await res.json()
+                localStorage.setItem("jwt", token)
+                getData()
+            } else {
+                const errortext = await res.json()
+                errordiv.innerHTML = errortext.error
+            }
         } catch (err) {
             console.error(err)
             displayError("Error! Try again!")
