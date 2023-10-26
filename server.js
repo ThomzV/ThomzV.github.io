@@ -274,7 +274,7 @@ function makePieSlice(projects, xp) { // function to create pie chart for total 
             info.style.display = "none"
         });
         start += slicesize
-        colorcount == colors.length ? colorcount = 0 : colorcount++
+        colorcount == colors.length-1 ? colorcount = 0 : colorcount++
     })
     var circle2 = document.createElementNS("http://www.w3.org/2000/svg", "circle") //creating inner circle for pie chart
     circle2.setAttribute("r", 75)
